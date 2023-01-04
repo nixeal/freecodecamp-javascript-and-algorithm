@@ -1,9 +1,8 @@
 function checkCashRegister(price, cash, cid) {
-    const money = [["PENNY", 0.01], ["NICKEL", 0.05], ["DIME", 0.1], ["QUARTER", 0.25], ["ONE", 1], ["FIVE", 5], ["TEN", 10], ["TWENTY", 20], ["ONE HUNDRED", 100]];
+    const money = [{PENNY:0.01}, {NICKEL: 0.05}, {DIME: 0.1}, {QUARTER:0.25},{ ONE: 1}, {FIVE: 5}, {TEN:10}, {TWENTY: 20}, {ONEHUNDRED: 100}];
     const mon = money.reverse();
     let change = cash - price;
-    console.log(change)
-    let changes = [];
+    let changes = cid.reduce((acc,inital)=>{},[])
     if (change < 0) return { status: "INSUFFICENT_FUNDS", change: [] };
     const totalcash = cid.reduce((a, x) => { return a + x[1] }, 0);
     if (change === totalcash) return { status: "CLOSED", change: [...cid] };
